@@ -1,0 +1,161 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Bootstrap demo</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+  </head>
+  <body>
+    
+    <style>
+    body{
+      background-color: aquamarine;
+    }
+    </style>
+  
+     
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+ <nav class="navbar bg-primary" data-bs-theme="dark">
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#">Biblioteca</a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link active" aria-current="page" href="#">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Libro</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Autor</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="#">Editorial</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>
+<div class="bg-success p-2 text-white">Puedes buscar por Titulo del libro, por nombre de Autor o por nombre de Editorial</div>
+<div class="bg-success p-2 text-white bg-opacity-75">Encuentra todos los libros aqui</div>
+<div class="bg-success p-2 text-dark bg-opacity-50">Todos los libros mas exitosos en esta pagina</div>
+<div class="bg-success p-2 text-dark bg-opacity-25">Con una navegacion intuitiva y agil</div>
+<div class="bg-success p-2 text-dark bg-opacity-10">Busca por generos</div>
+</div>
+<div id="smart-button-container">
+  <div style="text-align: center;">
+    <div id="paypal-button-container"></div>
+  </div>
+</div>
+<script src="https://www.paypal.com/sdk/js?client-id=sb&enable-funding=venmo&currency=USD" data-sdk-integration-source="button-factory"></script>
+<script>
+function initPayPalButton() {
+  paypal.Buttons({
+    style: {
+      shape: 'rect',
+      color: 'gold',
+      layout: 'vertical',
+      label: 'paypal',
+      
+    },
+
+    createOrder: function(data, actions) {
+      return actions.order.create({
+        purchase_units: [{"description":"Consultoria Financiera","amount":{"currency_code":"USD","value":15}}]
+      });
+    },
+
+    onApprove: function(data, actions) {
+      return actions.order.capture().then(function(orderData) {
+        
+        // Full available details
+        console.log('Capture result', orderData, JSON.stringify(orderData, null, 2));
+
+        // Show a success message within this page, e.g.
+        const element = document.getElementById('paypal-button-container');
+        element.innerHTML = '';
+        element.innerHTML = '<h3>Thank you for your payment!</h3>';
+
+        // Or go to another URL:  actions.redirect('thank_you.html');
+        
+      });
+    },
+
+    onError: function(err) {
+      console.log(err);
+    }
+  }).render('#paypal-button-container');
+}
+initPayPalButton();
+</script>
+<div class="btn-group" role="group" aria-label="Basic mixed styles example">
+  <button type="button" class="btn btn-danger">Literatura</button>
+  <button type="button" class="btn btn-warning">Filosofia</button>
+  <button type="button" class="btn btn-success">Economia y Finanzas</button>
+  <button type="button" class="btn btn-danger">Informatica</button>
+  <button type="button" class="btn btn-warning">Autoayuda</button>
+  <button type="button" class="btn btn-success">Psicologia</button>
+  <button type="button" class="btn btn-danger">Contablidad</button>
+  <button type="button" class="btn btn-warning">Matematica</button>
+  <button type="button" class="btn btn-success">Fisica</button>
+  <button type="button" class="btn btn-danger">Derecho</button>
+  <button type="button" class="btn btn-warning">Quimica</button>
+  <button type="button" class="btn btn-success">Desarrollo Personal</button>
+</div>
+
+<div id="carouselExampleFade" class="carousel slide carousel-fade">
+  <div class="carousel-inner">
+    <div class="carousel-item active">
+      <img src="C:\Users\diego\Desktop\JAVA\Iconos\Biblioteca 1.jpg" class="d-block w-100" alt="Libros">
+    </div>
+    <div class="carousel-item">
+      <img src="C:\Users\diego\Desktop\JAVA\Iconos\Biblioteca.jpg" class="d-block w-100" alt="Libros en biblioteca">
+    </div>
+    <div class="carousel-item">
+      <img src="C:\Users\diego\Desktop\JAVA\Iconos\descarga.jpg" class="d-block w-100" alt="...">
+    </div>
+  </div>
+  <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Previous</span>
+  </button>
+  <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleFade" data-bs-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="visually-hidden">Next</span>
+  </button>
+</div>
+    </body>
+    <section>
+      <h2>Destacados</h2>
+      <ul id="book-list">
+        <li class="book">
+          <img src="ElPatron.jpg" alt="El patron Bitcoin">
+          <h3>El Patron Bitcoin</h3>
+          <p> Saifedean Ammous</p>
+          <p>$20.00</p>
+        </li>
+        <li class="book">
+          <img src="ElCuadrante.jpg" alt="El Cuadrante del Flujo del Dinero">
+          <h3>El Cuadrante del Flujo del Dinero</h3>
+          <p>Robert Kiyosaki</p>
+          <p>$18.00</p>
+        </li>
+        <li class="book">
+          <img src="LosSecretos.jpg" alt="Los Secretos de la Mente Millonaria">
+          <h3>Los Secretos de la Mente Millonaria</h3>
+          <p>T. Harv Eker</p>
+          <p>$22.00</p>
+        </li>
+      </ul>
+    </section>
+    <button onclick="addToCart()">Agregar al carrito</button>
+    <button onclick="showCart()">Ver carrito</button>
+  </main>
+  <footer>
+    <p>Copyright © 2023 Mi tienda de libros en línea</p>
+  </footer>
+</html>
